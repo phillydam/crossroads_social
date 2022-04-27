@@ -1,5 +1,5 @@
 //require model, which is connected to the database
-const Profiles = require('../models/crossroads-model')
+const Profiles = require('../models/profiles-model')
 
 const seedData = require('./crossroads-seeds.json')
 

@@ -1,23 +1,29 @@
 //require the connection to database
+const { required } = require('nodemon/lib/config')
 const mongoose = require('../db/connection')
 
 //setup user profile schema
 const ProfilesSchema = new mongoose.Schema(
     {
         username: {
-            type: String
+            type: String,
+            // required: true
         },
         name: {
-            type: String
+            type: String,
+            // required: true
         },
         dob: {
-            type: String
+            type: String,
+            // required: true
         },
         location: {
-            type: String
+            type: String,
+            // required: true
         },
         aboutMe: {
-            type: String
+            type: String,
+            // required: true
         },
         profilePicUrl: {
             type: String
@@ -26,7 +32,7 @@ const ProfilesSchema = new mongoose.Schema(
     {timestamps: true}
 )
 
-const Profiles = mongoose.model('Profiles', ProfilesSchema)
+const Profile = mongoose.model('Profile', ProfilesSchema)
 
 //exports model
-module.exports = Profiles
+module.exports = Profile
