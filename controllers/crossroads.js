@@ -24,7 +24,16 @@ router.post('/create', (req, res) => {
 
 //update routes
 router.put('/:id', (req, res) => {
-    Profile.findByIdAndUpdate({_id: req.params.id}, req.body)
+    Profile.findByIdAndUpdate({ _id: req.params.id },
+        {
+            username: req.body.username,
+            name: req.body.name,
+            dob: req.body.dob,
+            location: req.body.location,
+            aboutMe: req.body.aboutMe,
+            profilePicURL: req.body.profilePicURL
+        },
+        {new: true})
     .then((profiles) => res.send(profiles))
 })
 

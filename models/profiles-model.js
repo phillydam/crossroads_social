@@ -26,7 +26,8 @@ const ProfilesSchema = new mongoose.Schema(
             required: true
         },
         profilePicUrl: {
-            type: String
+            type: String,
+            required: false
         }
     },
     {timestamps: true}
