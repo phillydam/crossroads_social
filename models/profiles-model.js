@@ -5,10 +5,6 @@ const mongoose = require('../db/connection')
 //setup user profile schema
 const ProfilesSchema = new mongoose.Schema(
     {
-        username: {
-            type: String,
-            required: true
-        },
         name: {
             type: String,
             required: true

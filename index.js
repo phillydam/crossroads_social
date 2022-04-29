@@ -1,8 +1,13 @@
 //setting up app requirements
 const express = require('express')
+const expressSession = require('express-session')
 const app = express()
+const MongoClient = require('mongodb').MongoClient
 const ejsLayouts = require('express-ejs-layouts')
 const crossroadsController = require('./controllers/crossroads')
+const passport = require('passport')
+const passportLocal = require('passport-local').passport
+const flash = require('connect-flash')
 
 //setting view engine/apps
 app.set('view engine', 'ejs')

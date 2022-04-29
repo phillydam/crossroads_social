@@ -5,8 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
 </head>
 <body>
-    <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
+    <h2>Update Profile</h2>
+    <div class="profileForms">
+        <div class="profileForm">
+            <label for="name"></label>
+            <input type="text" value="<%= req.params.name %>" name="form" id="name">
+        </div>
+    </div>
 </body>
 </html>

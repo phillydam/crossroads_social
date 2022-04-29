@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crossroads Social</title>
+    <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
+    <link rel="stylesheet" href="_frontend/style.css">
 </head>
 <body>
-    <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
+    <header>
+        <div class="">
+            <h1>Welcome!</h1>
+        </div>
+    </header>
+    <main>
+        <div class="profilePic">
+           <img src="" alt="">
+        </div>
+        <div class="userName">
+            <% profilesArray.forEach(profiles => { %>
+                <p><%= profiles.username %></p>
+            <%})%>
+        </div>
+    </main>
 </body>
 </html>

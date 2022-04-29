@@ -1,13 +1,13 @@
 //require model, which is connected to the database
-const Profiles = require('../models/profiles-model')
+const Logins = require('../models/login-model')
 
-const seedData = require('./crossroads-seeds.json')
+const seedData = require('./logins-seeds.json')
 
 //remove preexisting data
-Profiles.deleteMany({})
+Logins.deleteMany({})
     .then(() => {
         //inserts data then returns it to log into the ".then"
-        return Profiles.insertMany(seedData)
+        return Logins.insertMany(seedData)
         //if insert was successful, we'll see the results in the terminal
         .then(console.log)
         //if unsuccesful, logs the error
