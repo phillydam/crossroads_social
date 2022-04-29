@@ -6,6 +6,7 @@ const router = express.Router()
 const passport = require('passport')
 const Profile = require('../models/profiles-model')
 const Login = require('../models/login-model')
+const { render } = require('express/lib/response')
 
 /*
 get | profile | get all profiles
@@ -26,41 +27,33 @@ router.get('/editprofile', (req, res) => {
     res.render('editProfile')
 })
 
+/*this route posts profile info to database*/
 router.post('/editprofile', (req, res) => {
-    const {
-        username, 
-        password,
-        loginpassword, 
-        name, 
-        dob, 
-        location, 
-        aboutMe, 
-        profilePicUrl
-    } = req.body
-    if (password !== loginpassword) {
-        error.push({alert: "wrong password"})
-    } else {
-        Profile.findOne({username:  username}).exec((err, profile) => {
-            console.log(profile)
-            const newProfile = new Profile({
-            username: req.body.username,
-            password: req.body.password,
-            name: req.body.name,
-            dob: req.body.dob,
-            location: req.body.location,
-            aboutMe: req.body.aboutMe,
-            profilePicURL: req.body.profilePicURL
-            })
-        })
-    }
+    const newProfile = new Profile({
+        username: req.body.username,
+        password: req.body.password,
+        name: req.body.name,
+        dob: req.body.dob,
+        location: req.body.location,
+        aboutMe: req.body.aboutMe,
+        profilePicURL: req.body.profilePicURL 
+    })
+    newProfile.save()
+    res.redirect(`profile/${req.body.username}`)
 })
+    
+    
+    // Profile.create(req.body)
+        // .then(profiles => 
+        //     res.render('profile', {profilesArray: profiles}))
+        // })
+    
 
-
-router.get('/:id', (req, res) => {
-    const id = req.params.username
-    res.render('editProfile', 
+router.get('profile/:id', (req, res) => {
+    const id = req.body.username
+    res.render('profile', 
         {
-            id: req.params.id
+            id: req.body.id
         },
         {
             username: req.body.username,
@@ -105,7 +98,7 @@ router.post('/login', (req, res) => {
     res.redirect('/profile')
 })
 
-//update routes
+//pdate routes
 router.put('/:id', (req, res) => {
     Profile.findByIdAndUpdate({ _id: req.params.id },
         {

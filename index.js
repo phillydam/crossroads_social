@@ -10,6 +10,7 @@ const passportLocal = require('passport-local').passport
 const flash = require('connect-flash')
 
 //setting view engine/apps
+app.use(express.urlencoded({ extended: false}))
 app.set('view engine', 'ejs')
 // app.use(express.json)
 app.use(crossroadsController)

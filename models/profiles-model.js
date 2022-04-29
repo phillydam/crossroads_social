@@ -7,31 +7,31 @@ const ProfilesSchema = new mongoose.Schema(
     {
         username: {
             type: String,
-            required: true
+            // required: true
         },
         password: {
             type: String,
-            required: true
+            // required: true
         },
         name: {
             type: String,
-            required: true
+            // required: true
         },
         dob: {
             type: String,
-            required: true
+            // required: true
         },
         location: {
             type: String,
-            required: true
+            // required: true
         },
         aboutMe: {
             type: String,
-            required: true
+            // required: true
         },
         profilePicUrl: {
             type: String,
-            required: false
+            // required: false
         }
     },
     {timestamps: true}
