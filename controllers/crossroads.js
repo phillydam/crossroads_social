@@ -18,15 +18,61 @@ delete | profile/1 | delete profile with id 1
 
 //login routes
 router.get('/', (req, res) => {
-    Login.find({}, function(err, logins) {
-        res.render('index', {
-            loginsArray: logins
-        })
+    res.render('index')
     })
+
+//edit/create profile route
+router.get('/editprofile', (req, res) => {
+    res.render('editProfile')
+})
+
+router.post('/editprofile', (req, res) => {
+    const {
+        username, 
+        password,
+        loginpassword, 
+        name, 
+        dob, 
+        location, 
+        aboutMe, 
+        profilePicUrl
+    } = req.body
+    if (password !== loginpassword) {
+        error.push({alert: "wrong password"})
+    } else {
+        Profile.findOne({username:  username}).exec((err, profile) => {
+            console.log(profile)
+            const newProfile = new Profile({
+            username: req.body.username,
+            password: req.body.password,
+            name: req.body.name,
+            dob: req.body.dob,
+            location: req.body.location,
+            aboutMe: req.body.aboutMe,
+            profilePicURL: req.body.profilePicURL
+            })
+        })
+    }
 })
 
 
-//edit/create profile route
+router.get('/:id', (req, res) => {
+    const id = req.params.username
+    res.render('editProfile', 
+        {
+            id: req.params.id
+        },
+        {
+            username: req.body.username,
+            password: req.body.password,
+            name: req.body.name,
+            dob: req.body.dob,
+            location: req.body.location,
+            aboutMe: req.body.aboutMe,
+            profilePicURL: req.body.profilePicURL            
+        }
+    )
+})
 
 
 //profile routes

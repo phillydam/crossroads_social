@@ -8,12 +8,32 @@
     <link rel="icon" type="image/svg+xml" href="https://example.com/image.svg">
 </head>
 <body>
-    <h2>Update Profile</h2>
-    <div class="profileForms">
-        <div class="profileForm">
-            <label for="name"></label>
-            <input type="text" value="<%= req.params.name %>" name="form" id="name">
+    <h2>Profile Editor</h2>
+    <form action="/editProfile" method="POST">
+        <div class="username">
+            <label for="username">Username</label>
+            <input type="username" name="username" id="username" placeholder="Enter Username" value="">
         </div>
-    </div>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+        </div>
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="name" name="name" id="name" placeholder="Enter Name">
+        </div>
+        <div class="dob">
+            <label for="dob">Birthday</label>
+            <input type="dob" name="dob" id="dob" placeholder="Enter Birthday">
+        </div>
+        <div class="aboutMe">
+            <label for="aboutMe">About Me</label>
+            <input type="aboutMe" name="aboutMe" id="aboutMe" placeholder="About Me">
+        </div>
+        <button type="submit" class="submit button">
+            Submit
+        </button>
+    </form>
+    <a href="/">Back To Sign In</a>
 </body>
 </html>

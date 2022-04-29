@@ -17,13 +17,14 @@
     <main>
         <div class="login">
             <label for="username">Username</label>
-            <input type="text" name="" id="username">
+            <input type="username" name="username" id="username" placeholder="Enter Username">
         </div>
-        <div class="userName">
-            <% loginsArray.forEach(logins => { %>
-                <p><%= logins.username %></p>
-            <%})%>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter Password">
         </div>
+        <button type="submit" class="button submit">Submit</button>
+        <a href="/editProfile">Create An Account!</a>
     </main>
 </body>
 </html>

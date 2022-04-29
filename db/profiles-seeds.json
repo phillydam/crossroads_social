@@ -1,5 +1,7 @@
 [
     {
+        "username": "phillydam",
+        "password": "1234",
         "name": "Drew",
         "dob": "Sept 14",
         "location": "Washington, DC",
@@ -7,6 +9,8 @@
         "profilePicUrl": "https://i.insider.com/5abb9e6a3216741c008b462d?width=700"
     },
     {
+        "username": "goat23",
+        "password": "anakin",
         "name": "Ahsoka",
         "dob": "October 30",
         "location": "Space",
@@ -14,6 +18,8 @@
         "profilePicUrl": "https://64.media.tumblr.com/eafcae3fb760b3b289791a4eba50407c/34f2001479f66096-ff/s1280x1920/696ad447a16b742699c0000bc54cacc8b1047e16.jpg"
     },
     {
+        "username": "oldman",
+        "password": "avengers",
         "name": "Steve",
         "dob": "July 4",
         "location": "America",
