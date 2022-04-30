@@ -10,6 +10,7 @@ const passportLocal = require('passport-local').passport
 const flash = require('connect-flash')
 const methodOverride = require('method-override')
 const Profile = require('./models/profiles-model')
+const Comment = require('./models/comment-model')
 
 //setting view engine/apps
 app.use(express.urlencoded({ extended: false}))
