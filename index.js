@@ -8,15 +8,24 @@ const crossroadsController = require('./controllers/crossroads')
 const passport = require('passport')
 const passportLocal = require('passport-local').passport
 const flash = require('connect-flash')
+const methodOverride = require('method-override')
+const Profile = require('./models/profiles-model')
 
 //setting view engine/apps
 app.use(express.urlencoded({ extended: false}))
 app.set('view engine', 'ejs')
 // app.use(express.json)
-app.use(crossroadsController)
-app.use('/profile', crossroadsController)
-app.use(ejsLayouts)
 
+// app.use(ejsLayouts)
+// app.use('/profile', crossroadsController)
+app.use(methodOverride('_method'))
+app.use(crossroadsController)
+
+
+
+
+//delete route
+// app.get('/profile/:username', Profile.deleteOne)
 
 //setting up PORT
 const PORT = 5000

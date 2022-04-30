@@ -37,14 +37,14 @@ router.post('/editProfile', (req, res) => {
         dob: req.body.dob,
         location: req.body.location,
         aboutMe: req.body.aboutMe,
-        profilePicURL: req.body.profilePicURL 
+        profilePicUrl: req.body.profilePicUrl
     })
     newProfile.save()
-    res.redirect(`profile/${req.body.username}`)
+    res.redirect(`/${req.body.username}`)
 })
     
 //profile routes
-router.get('/profile/:username', (req, res) => {
+router.get('profile/:username', (req, res) => {
     Profile.find({ username: req.params.username}, function(err, profiles){
         res.render(`profile`, {
             profilesArray: profiles
@@ -60,67 +60,25 @@ router.get('/profile/:username', (req, res) => {
 // })
 
 //create routes
-router.post('/profiles', (req, res) => {
+router.post('/', (req, res) => {
     Profile.create(req.body)
         .then((profiles) => res.send(profiles))
 })
 
 router.post('/login', (req, res) => {
-    res.redirect('/profile')
+    res.redirect('/')
 })
 
 //update routes
-// router.put('/profile/:id', (req, res) => {
-//     Profile.find({ _id: req.params.id}, function(err, profiles){
-//     const updatedProfile = new Profile({
-//         username: req.body.username,
-//         password: req.body.password,
-//         name: req.body.name,
-//         dob: req.body.dob,
-//         location: req.body.location,
-//         aboutMe: req.body.aboutMe,
-//         profilePicURL: req.body.profilePicURL 
-//     })
-//     updatedProfile.save(`/profile/${req.body.username}`)
-//     res.redirect('/editProfile')
-//     })
-// })
-
-
-// router.put('/profile/:id', (req, res) => {
-//     Profile.findByIdAndUpdate({ username: req.params.username}, function(err, profiles)
-//     {
-//         res.render('profile', {
-//         profilesArray: profiles})
-//     },
-//         {new: true}
-//     )
-//     .then((profiles) => res.render('profile', profiles))
-// })
-
-// router.get('/editProfile/:id', (req, res) => {
-//     Profile.findById(req.params.id)
-//         .then(profiles => {
-//             res.render('editProfile', profiles)}
-//             )}
-//         )
-
-router.put('editProfile/:id', (req, res) =>{
-    Profile.findOneAndUpdate(
-        {_id: req.params.id},
-        {
-            username: req.body.username,
-            password: req.body.password,
-            name: req.body.name,
-            dob: req.body.dob,
-            location: req.body.location,
-            aboutMe: req.body.aboutMe,
-            profilePicURL: req.body.profilePicURL 
-        },
+router.put('/:username', (req, res) => {
+    Profile.findOneAndUpdate({ username: req.params.username}, function(err, profiles)
+    {
+        res.render('profile', {
+        profilesArray: profiles})
+    },
+        {new: true}
     )
-    .then( profiles => {
-        res.render('editProfile', profiles)
-    })
+    .then((profiles) => res.render('profile', profiles))
 })
 
 //delete routes
@@ -131,9 +89,9 @@ router.put('editProfile/:id', (req, res) =>{
 //     })
 // })
 
-router.delete('/profile/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     Profile.findByIdAndDelete({_id: req.params.id}).then(profiles =>
-        res.redirect('/')
+        res.redirect('/profile')
         )})
 
 
